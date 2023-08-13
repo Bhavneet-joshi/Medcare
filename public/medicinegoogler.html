@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/angular.min.js"></script>
+    <link rel="stylesheet" href="css/medicinegoogler.css">
+
+    <script>
+        function loadFile(ref) {
+            var image = document.getElementById('imagee');
+            image.src = URL.createObjectURL(ref.files[0]);
+
+        };
+
+
+    </script>
+
+
+
+
+
+    <script>
+
+
+
+        //angular is an object provided by angularjs
+        var myModule = angular.module("itsMyModule", []);
+        myModule.controller("myController", function ($scope, $http) {
+
+
+
+
+            $scope.fetchCities = function () {
+                $http.get("/fetch-Cities").then(fxSuccess, fxFail);
+                function fxSuccess(response) {
+                    // alert(JSON.stringify(response.data));
+                    $scope.onlyCitiesJson = response.data;
+                }
+                function fxFail(response) {
+                    alert(response.data);
+                }
+            }
+
+            // ========================================================== 
+            $scope.fetchMedicines = function () {
+                $http.get("/fetch-Medicines").then(fxSuccess, fxFail);
+                function fxSuccess(response) {
+                    // alert(JSON.stringify(response.data));
+                    $scope.onlyMedicinesJson = response.data;
+                }
+                function fxFail(response) {
+                    alert(response.data);
+                }
+            }
+            // ========================================================== 
+
+            $scope.fetchMediciness = function () {
+
+                //    var a= document.getElementById("inputFind").value;
+
+                var city = $("#inputCity").val();
+                var medi = $("#inputMedicine").val();
+
+
+                var url = "/fetchmedicine?xcity=" + city + "&ymedi=" + medi;
+
+                alert(url);
+
+                $http.get(url).then(fxSuccess, fxFail);
+                function fxSuccess(response) {
+                    // alert(JSON.stringify(response.data));
+                    $scope.allRecordsJson = response.data;
+                }
+                function fxFail(response) {
+                    alert(response.data);
+                }
+            }
+            // ==================================================== 
+            $scope.doShowDetails = function (email) {
+                alert(email);
+                var url = "/fetch-provider-details?xEmail=" + email;
+
+                //send json request  with emailid to get contact details from PROFILE table
+                $http.get(url).then(fxSuccess, fxFail);
+                function fxSuccess(response) {
+                    // alert(JSON.stringify(response.data));
+                    $scope.allRecordsJson1 = response.data;
+                }
+                function fxFail(response) {
+                    alert(response.data);
+                }
+
+            }
+
+
+        })
+    </script>
+    <!-- ==================================================================  -->
+
+    <!-- <style type="text/css">
+        @media screen and (min-width: 500px) {
+            a {
+                display: none
+            }
+        }
+    </style> -->
+
+
+
+
+
+
+
+</head>
+
+<body ng-app="itsMyModule" ng-controller="myController" ng-init="fetchCities(); fetchMedicines();">
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title">
+                    <span class="title-word title-word-1">MEDICINE</span>
+                    <span class="title-word title-word-2">GOOGLER</span>
+                </div>
+            </div>
+        </div>
+        <!-- =============================================================================  -->
+        <div class="row">
+            <div class="col-md-6">
+                <label for="inputCity" class="form-label hi">CITY</label>
+                <select id="inputCity" class="form-select">
+                    <option selected>Choose...</option>
+                    <option ng-repeat="obj in onlyCitiesJson" value="{{obj.city}}">{{obj.city}}</option>
+                </select>
+            </div>
+            <div class="col-md-6">
+
+                <label for="inputMedicine" class="form-label hi">MEDICINES</label>
+                <select id="inputMedicine" class="form-select">
+                    <option selected>Choose...</option>
+                    <option ng-repeat="obj in onlyMedicinesJson" value="{{obj.med}}">{{obj.med}}</option>
+                </select>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                    <input type="button" class="hii" value="Find Medicines" id="inputFind" name="inputFind"
+                        ng-click="fetchMediciness();">
+                </center>
+            </div>
+        </div>
+
+        <!-- ==============================================================  -->
+        <!-- ===================================================================  -->
+        <!-- ===========================================================================  -->
+        <div id="mycards">
+            <div class="row">
+                <div class="col-md-3 offset-md-1" ng-repeat="obj in allRecordsJson">
+                    <div class="card" style="width: 24rem;" id="crdu">
+                        <img src="uploadpic/{{obj.pic}}" class="card-img-top" id="imagee" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title"><span class="cards">Email:-</span>{{obj.email}}</h5>
+                            <h5 class="card-title"><span class="cards">Medicine Name:-</span>{{obj.med}}</h5>
+                            <h5 class="card-title"><span class="cards">Company:-</span>{{obj.company}}</h5>
+                            <h5 class="card-title"><span class="cards">Packing:-</span>{{obj.packing}}</h5>
+                            <h5 class="card-title"><span class="cards">Qty:-</span>{{obj.qty}}</h5>
+                            <h5 class="card-title"><span class="cards">Expiry Date:-</span>{{obj.expdate}}</h5>
+                            <h5 class="card-title"><span class="cards">Date of Listing:-</span>{{obj.dol}}</h5>
+
+
+                            <input type="button" class="btn btn-primary btni" value="CONTACT DETAILS"
+                                data-bs-toggle="modal" data-bs-target="#ContactModal"
+                                ng-click="doShowDetails(obj.email);"></input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ============================================================  -->
+
+        <!-- modal -->
+        <!-- Button trigger modal -->
+
+
+        <!-- Modal -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="modal fade" id="ContactModal" data-bs-backdrop="static" data-bs-keyboard="false"
+                    tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="staticBackdropLabel">PROVIDER DETAILS</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body" ng-repeat="obj in allRecordsJson1">
+                                <h5><span class="cards">Email:- </span>{{allRecordsJson1[0].email}}</h5>
+                                <hr>
+                                <h5><span class="cards">Name:- </span>{{obj.name}}</h5>
+                                <hr>
+                                <h5><span class="cards">Contact:- </span>{{obj.contact}}</h5>
+                                <hr>
+                                <h5><span class="cards">Address:- </span>{{obj.address}}</h5>
+                                <hr>
+                                <h5><span class="cards">City:- </span>{{obj.city}}</h5>
+                                <hr>
+                                <h5><span class="cards">Contact Time:- </span>{{obj.ctime}}</h5>
+                                <hr>
+                                <h5><span class="cards">Pic:- </span></h5>
+
+                                <img src="uploadpic/{{obj.profilepic}}" class="card-img-top" id="imageee" alt="...">
+
+                                <!-- <h3>Whatsapp sharing</h3>
+
+                                <a href="whatsapp://send?text=GFG Example for whatsapp sharing"
+                                    data-action="share/whatsapp/share" target="_blank">
+                                    Share to whatsapp
+                                </a> -->
+                                <hr>
+                                <!-- <a href="https://wa.me/+91-7626855371" target="_blank">whatsapplink</a> -->
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ============================================================  -->
+
+
+
+    </div>
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+#cards
+{
+    margin-top: 20px;
+}
+
+#card1
+{
+    margin-left: 40px;
+
+    transform:
+    perspective(800px)
+    rotateY(0deg);
+  transition: transform 1s ease 0s;
+  border-radius: 4px;
+  box-shadow:
+    rgba(0, 0, 0, 0.024) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0.05) 0px 1px 0px 0px,
+    rgba(0, 0, 0, 0.03) 0px 0px 8px 0px,
+    rgba(0, 0, 0, 0.1) 0px 20px 30px 0px;
+
+}
+#card2
+{
+    margin-left: 40px;
+    transform:
+    perspective(800px)
+    rotateY(0deg);
+  transition: transform 1s ease 0s;
+  border-radius: 4px;
+  box-shadow:
+    rgba(0, 0, 0, 0.024) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0.05) 0px 1px 0px 0px,
+    rgba(0, 0, 0, 0.03) 0px 0px 8px 0px,
+    rgba(0, 0, 0, 0.1) 0px 20px 30px 0px;
+}
+#card3
+{
+    margin-left: 40px;
+    transform:
+    perspective(800px)
+    rotateY(0deg);
+  transition: transform 1s ease 0s;
+  border-radius: 4px;
+  box-shadow:
+    rgba(0, 0, 0, 0.024) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0.05) 0px 1px 0px 0px,
+    rgba(0, 0, 0, 0.03) 0px 0px 8px 0px,
+    rgba(0, 0, 0, 0.1) 0px 20px 30px 0px;
+}
+
+#card4
+{
+    margin-left: 40px;
+    margin-top: 20px;
+    transform:
+    perspective(800px)
+    rotateY(0deg);
+  transition: transform 1s ease 0s;
+  border-radius: 4px;
+  box-shadow:
+    rgba(0, 0, 0, 0.024) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0.05) 0px 1px 0px 0px,
+    rgba(0, 0, 0, 0.03) 0px 0px 8px 0px,
+    rgba(0, 0, 0, 0.1) 0px 20px 30px 0px;
+}
+
+#knowlwdge
+{
+  margin-top: 30px;
+  margin-left: 40px;
+}
+#imgs
+{
+    height: 339px;
+}
+#imgss
+{
+    height: 339px;
+}
+#imgsss
+{
+    height: 339px;
+}

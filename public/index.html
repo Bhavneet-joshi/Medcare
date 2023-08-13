@@ -1,0 +1,984 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>www.medcare.com</title>
+    <link rel="shortcut icon" href="pics/favicon-32x32.png" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/indexStyle.css">
+    <link rel="stylesheet" href="css/signupStyle.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+
+    <script>
+        $(document).ready(function () {
+            $("#btnsignup").click(function () {
+
+
+                var email = $("#inputEmail4").val();
+                var pwd = $("#inputPassword4").val();
+                var type = $("#inputState").val();
+                // var status = $("#inputStatus").val();
+
+                var url = "/signup-process?xEmail=" + email + "&yPwd=" + pwd + "&zType=" + type;
+                alert(url);
+                $.get(url, function (response) {
+                    $("#res1").html(response);
+                })
+
+            });
+
+            $("#inputEmail4").blur(function () {
+                //using regular Expressions
+                var email = $("#inputEmail4").val();
+                var r = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+
+                if (r.test(email) == true)
+                    $("#errEmail").html("&#9989").addClass("ok").removeClass("not-ok");
+                else {
+                    $("#errEmail").html("&#10060").addClass("not-ok").removeClass("ok");
+                    $('#btnsignup').prop('disabled', true);
+
+                }
+                dododo();
+
+            });
+
+            // =============================
+            $("#inputPassword4").blur(function () {
+
+                var pass1 = $("#inputPassword4").val();
+
+                var r = /(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+
+                if (r.test(pass1)) {
+
+                    $("#errPwd").html("&#9989").addClass("ok").removeClass("not-ok");
+                }
+                else {
+                    $("#errPwd").html("&#10060").addClass("not-ok").removeClass("ok");
+                    $('#btnsignup').prop('disabled', true);
+
+                }
+
+                dododo();
+
+            });
+
+            // $("#inputState").blur(function()
+            // {
+            //         if(type == "Select")
+            //      {
+            //         $('#btnsignup').prop('disabled', true);
+            //      }
+
+            // });
+
+            $("#inputState").change(function () {
+
+                dododo();
+            }
+            );
+
+            // =========================================================================================================== 
+            $("#inputEmail5").blur(function () {
+                //using regular Expressions
+                var email = $("#inputEmail5").val();
+                var r = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+
+                if (r.test(email) == true)
+                    $("#errEmail1").html("&#9989").addClass("ok").removeClass("not-ok");
+                else
+                    $("#errEmail1").html("&#10060").addClass("not-ok").removeClass("ok");
+
+            });
+
+            // =============================
+            $("#inputPassword5").blur(function () {
+
+                var pass1 = $("#inputPassword5").val();
+
+                var r = /(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+
+                if (r.test(pass1)) {
+
+                    $("#errPwd1").html("&#9989").addClass("ok").removeClass("not-ok");
+                }
+                else
+                    $("#errPwd1").html("&#10060").addClass("not-ok").removeClass("ok");
+                //  dododo();
+
+
+            });
+            // =========================================================================================================== 
+            function dododo() {
+                var email = $("#inputEmail4").val();
+                var r = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+                var pass1 = $("#inputPassword4").val();
+
+                var r1 = /(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/;
+
+                var type = $('#inputState').val();
+
+
+
+
+                if (r.test(email) == true && r1.test(pass1) == true) {
+                    if (type == "Needy" || type == "Provider") {
+                        $('#btnsignup').prop('disabled', false);
+                    }
+                    else
+                        $('#btnsignup').prop('disabled', true);
+                }
+                //  else
+                // if(type== "Select")
+                // {
+                // $('#btnsignup').prop('disabled', true);
+                // }
+
+
+            }
+
+
+
+
+
+            $(".fa").mousedown(function () {
+
+                var pass = $("#inputPassword4").val();
+
+
+                $(".fa").mousedown(function () {
+                    $("#inputPassword4").prop("type", "text");
+                    $(".fa").removeClass("fa-eye-slash").addClass("fa-eye");
+                })
+                $(".fa").mouseup(function () {
+                    $("#inputPassword4").attr("type", "password");
+
+                    $(".fa").removeClass("fa-eye").addClass("fa-eye-slash");
+                })
+            });
+            // ========================================================== 
+            $(".fa").mousedown(function () {
+
+                var pass = $("#inputPassword5").val();
+
+
+                $(".fa").mousedown(function () {
+                    $("#inputPassword5").prop("type", "text");
+                    $(".fa").removeClass("fa-eye-slash").addClass("fa-eye");
+                })
+                $(".fa").mouseup(function () {
+                    $("#inputPassword5").attr("type", "password");
+
+                    $(".fa").removeClass("fa-eye").addClass("fa-eye-slash");
+                })
+            });
+            // =========================================================== 
+            $("#btnLogin").click(function () {
+                var email = $("#inputEmail5").val();
+                var pwd = $("#inputPassword5").val();
+
+                var url = "/login-process?xEmail1=" + email + "&yPwd1=" + pwd;
+                //fire AJAX Request
+                $.getJSON(url, function (responseJSON) {
+                    alert(JSON.stringify(responseJSON));
+                    if (responseJSON.length == 0) {
+                        $("#res2").html("Ivalid Email/Password-No Record Found");
+                    }
+                    else {
+
+                        localStorage.setItem("activeuser", email);
+                        alert(email);
+                        $("#res2").html("Valid User :" + responseJSON[0].type);
+                        if (responseJSON[0].type == "Provider" && responseJSON[0].status == "1")
+                            window.location.href = "dash-provider.html";
+                        else
+                        if(responseJSON[0].type == "Needy" && responseJSON[0].status == "1")
+                            window.location.href = "dash-needy.html";
+                            else
+                            alert("You permission is not verfied please wait! Try After sometime ");
+
+                    }
+
+                })
+            });
+
+
+
+
+
+
+        });
+    </script>
+
+</head>
+
+<body>
+
+    <div class="container">
+        <form action="">
+            <center>
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- <div id="fullpart"> -->
+
+                        <a style="width: 40px; height: 40px; font-size: 50px; margin-left: 680px; margin-top:620px ; position: fixed;"
+                            href="">&#8593;</a>
+
+
+
+                        <!-- style="background-color: #13202a;" -->
+
+
+                        <nav class="navbar navbar-dark sticky-top " style="background-color: #13202a;" id="navu">
+                            <div class="container">
+                                <a class="navbar-brand" href="#">
+                                    <img id="imgo" src="pics/logonew.png" alt="" width="30" height="24">
+                                </a>
+
+                                <div id="texto" style="font-size: xx-large; color: white;"><span>MEDCARE</span>
+                                </div>
+
+
+
+
+                                <ul class="snip1226" id="lefthojo">
+                                    <li class="current"><a href="#" data-hover="Home">Home</a></li>
+                                    <li><a href="#md" data-hover="About Us">About Us</a></li>
+
+                                    <li><a href="#srvc" data-hover="Services">Services</a></li>
+                                    <li><a href="#" data-hover="Products">Products</a></li>
+                                    <li><a href="#" data-hover="Contact">Contact</a></li>
+                                </ul>
+
+
+
+                                <!-- ========================================== -->
+                                <div>
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#exampleModal"> <button
+                                            class="btn btn-outline-danger me-2" id="btno"
+                                            type="button">SIGNUP</button></a>
+
+
+
+                                    <a href="#" data-bs-toggle="modal" data-bs-target="#LoginModal"> <button
+                                            class="btn btn-outline-danger me-2" id="btno1"
+                                            type="button">LOGIN</button></a>
+
+                                            <!-- <a href="#" data-bs-toggle="modal" data-bs-target="#AdminModal">
+                                                 <button
+                                                class="btn btn-outline-danger me-2" id="btno1"
+                                                type="button">ADMIN</button>
+                                            </a> -->
+
+                                </div>
+
+                            </div>
+                        </nav>
+
+
+
+
+
+
+
+                        <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                            <div class="carousel-indicators">
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                                    class="active" aria-current="true" aria-label="Slide 1"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                                    aria-label="Slide 2"></button>
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                                    aria-label="Slide 3"></button>
+                            </div>
+                            <div class="carousel-inner spc">
+                                <div class="carousel-item active">
+                                    <img id="imgc1" src="pics/136934.webp" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img id="imgc1" src="pics/medicinesss.jpg" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img id="imgc1" src="pics/mediciness.jpg" class="d-block w-100" alt="...">
+                                </div>
+                                <div class="carousel-item">
+                                    <img id="imgc1" src="pics/newmagic.jpg" class="d-block w-100" alt="...">
+                                </div>
+
+                            </div>
+                            <button class="carousel-control-prev" type="button"
+                                data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" style="background-color: #0c1115;"
+                                    aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button"
+                                data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" style="background-color: #0c1115;"
+                                    aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                        <div>&nbsp;</div>
+
+                        <div class="sign">
+                            <span class="fast-flicker">W</span>el<span class="flicker">co</span>me
+                        </div>
+
+                        <div class="rainbow" id="srvc" style="background-color:white;color:black;font-size:x-large">
+                            OUR SERVICES</div>
+
+                        <div id="cardss">
+                            <div class="row">
+                                <div class="col-md-3">
+
+                                    <!-- ============================================================ -->
+                                    <div class="card" style="width: 24rem;" id="card11">
+                                        <img src="pics/avlmed.jpeg" class="card-img-top" alt="..." id="card1pic">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Available Medicines</h5>
+                                            <p class="card-text">We provide numerous medicines that are the most
+                                                common and highly demanded. Medicine of every field is available
+                                                here.</p>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- ==================================================================== -->
+                                <div class="col-md-3 offset-md-1">
+
+                                    <!-- ============================================================ -->
+                                    <div class="card" style="width: 24rem;" id="card12">
+                                        <img src="pics/freemedicne.webp" class="card-img-top" alt="..." id="card1pic">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Get Medicine Free</h5>
+                                            <p class="card-text">By finishing few steps on our websites you can take
+                                                thousands of medicine free and save your lot of money.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- ===============================================================  -->
+                                <div class="col-md-3 offset-md-1">
+
+                                    <!-- ============================================================ -->
+                                    <div class="card" style="width: 24rem;" id="card13">
+                                        <img src="pics/Motive.jpg" class="card-img-top" alt="..." id="card1pic">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Motive</h5>
+                                            <p class="card-text">Most of the people can't afford the medicines due
+                                                to the cost so our motive is to provide the medicines free of cost
+                                                for the needy one.</p>
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <!-- </div> -->
+                            </div>
+                        </div> <!-- ================================================================= -->
+
+                        <div class="rainbow" id="md"
+                            style="background-color:white;color:black;font-size:x-large;margin-top: 10px;">MEET THE
+                            DEVELOPERS</div>
+                        <!-- =========================================================================== -->
+                        <div id="infospc">
+                            <div class="card mb-3" style="max-width: 540px;" id="infocard">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="PICS/WhatsApp Image 2022-08-25 at 3.05.41 PM-removebg-preview.jpg"
+                                            class="img-fluid rounded-start" alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Developer</h5>
+                                            <p class="card-text">I'm Bhavneet Joshi full stack web developer from
+                                                bathinda,punjab. My age is 20 and i am currently student at gzsccet
+                                                college at bathinda. Our maain motive behind this site is for the
+                                                helping of those people who cannot afford their cost of medicine.
+                                            </p>
+                                            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <!-- ==================================== -->
+                            <div class="card mb-3" style="max-width: 540px;">
+                                <div class="row g-0">
+                                    <div class="col-md-4">
+                                        <img src="PICS/image.png" id="sir" class="img-fluid rounded-start" alt="...">
+                                    </div>
+                                    <div class="col-md-8">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Under Guidance of</h5>
+                                            <p class="card-text">Rajesh K. Bansal (SCJP-Sun Certified Java
+                                                Programmer)
+                                                20 Years experience in Training & Development. Founder of
+                                                realJavaOnline.com, loves coding in Java(J2SE, J2EE), C++,PHP,
+                                                Python, AngularJS, Android,MERN
+                                                Stack(MongoDB,Express,ReactJS,NodeJS).
+                                            </p>
+                                            <!-- <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ============================================================================= -->
+                        <div class="rainbow"
+                            style="background-color:white;color:black;font-size:x-large;margin-top: 10px;">Reach Us
+                        </div>
+                        <div id="mapp">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13796.719881303527!2d74.9242774!3d30.1748526!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x98b0adf19ab47296!2sMaharaja%20Ranjit%20Singh%20Punjab%20Technical%20University!5e0!3m2!1sen!2sin!4v1658496020954!5m2!1sen!2sin"
+                                width="1300" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+
+                        <br>
+
+                        <!-- =================================================================================== -->
+                        <div class="rainbow" id="bk"
+                            style="background-color:white;color:black;font-size:x-large;margin-bottom: 10px;">Basic
+                            Knowledge About medicine</div>
+                        <div id="right-side">
+                            <iframe style="margin-left: 0px;" src="https://www.youtube.com/embed/U8XsQB1OeZI" id="frame"
+                                name="frame" width="40%" height="300px" frameborder="0"></iframe>
+                            <iframe style="margin-left: 240px;" src="https://www.youtube.com/embed/z1pzJkNxfo8"
+                                id="frame1" name="frame1" width="40%" height="300px" frameborder="0"></iframe>
+
+
+                        </div>
+
+
+                        <!-- ======================================================================================== -->
+
+                        <br><br>
+
+                        <div id="textlikho">
+                            <h2>Top 100 Searched Drugs</h2>
+                            <center>
+                                <table class="table table-striped table-hover" id="tbl">
+                                    <tr>
+                                        <td>
+                                            <a href="">Abilify</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Amoxicillin</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Benzonatate</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Morphine</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="">Atorvastatin</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Levothyroxine</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Omeprazole</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Losartan</a>
+                                        </td>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            <a href="">Sertraline</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Simvastatin</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Montelukast</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Pantoprazole</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="">Bupropion</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Prednisone</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Dulaglutide</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Paroxetine</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="">Zolpidem</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Finasteride</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Dexmethylphenidate</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Donepezil</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="">Tramadol</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Folic Acid</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Citalopram</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Morphine</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="">Glipizide</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Ezetimibe</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Dulaglutide</a>
+                                        </td>
+                                        <td>
+                                            <a href=""> Thyroid</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <a href="">Lorazepam</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Diltiazem</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Benzonatate</a>
+                                        </td>
+                                        <td>
+                                            <a href="">Valacyclovir</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td>
+
+                                        </td>
+                                        <td>
+                                            <input type="button" value="More">
+                                        </td>
+                                    </tr>
+                                </table>
+                            </center>
+                            <h2>6 Safety Precautions to Take Regarding Your Medication</h2>
+                            <table>
+                                <tr>
+                                    <td>
+                                        Medication can be an important component of your health and wellness
+                                        journey. Prescriptions are nothing to be nervous about when you’re working
+                                        actively with your doctor to make sure your regimen is right for you. But
+                                        there are a few safety precautions to factor in when it comes to your
+                                        prescriptions. Here are six safety considerations to bear in mind regarding
+                                        your medication.
+                                    </td>
+
+                                </tr>
+
+                            </table>
+                            <hr>
+                            &nbsp;
+                            <h2>Protect Your Medication from the Elements</h2>
+                            <table>
+                                <tr>
+
+                                    <td>
+                                        Drug companies typically guarantee that their medication will be effective
+                                        when stored between 68 and 77 degrees. This is because outside of that
+                                        range, they might change physically (think of a gel tablet freezing or a
+                                        salve melting), lose strength, or even potentially cause harm, according to
+                                        Skye McKennon, clinical assistant professor at the University of Washington
+                                        School of Pharmacy, in an interview with the New York Times. Keep bottles
+                                        out of the light and away from heat sources to be on the safe side.
+                                    </td>
+                                </tr>
+                            </table>
+                            <hr>
+                            &nbsp;
+                            <h2>Keep Your Medication Separated</h2>
+
+                            <table>
+                                <tr>
+                                    <td>
+                                        You want your medications to be distinct from other family members’ so
+                                        you’re not accidentally mixing up your ibuprofen with Grandma’s cholesterol
+                                        drugs. You should also separate medications from household chemicals like
+                                        cleaners and detergents, so you don’t have to worry about dangerous
+                                        cross-contamination.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <img src="pics/girl.jpg" class="img-fluid" alt="...">
+                                </tr>
+                            </table>
+                            <hr>
+                            &nbsp;
+                            <h2>Follow all Usage Instructions</h2>
+                            <table>
+                                <tr>
+                                    <td>
+                                        Once you’ve educated yourself by reading the labels and information provided
+                                        by your doctor and the pharmacy, put that to good use and follow all
+                                        instructions. If you need to take a medicine with a meal or right before
+                                        bed, make sure you do so. This diligence is important for “controlling
+                                        chronic conditions, treating temporary conditions, and overall long-term
+                                        health and well-being,” according to the FDA.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <img src="pics/girl1.webp" class="img-fluid" alt="...">
+                                </tr>
+                            </table>
+                            &nbsp; &nbsp;
+                        </div>
+                        <!-- ================================================== -->
+                        <hr style="border: 3px solid black;">
+                        <div id="nichewala">
+                            <table>
+                                <tr>
+
+
+                                    <td>
+                                        Policies <br>
+                                        <a href=""> Privacy Policy <br></a>
+                                        <a href=""> Cookie Policy<br></a>
+                                        <a href=""> Editorial Policy<br></a>
+                                        <a href=""> Advertising Policy<br></a>
+                                        <a href=""> Correction Policy<br></a>
+                                        <a href=""> Terms of Use<br></a>
+                                    </td>
+                                    <td>&nbsp;&nbsp;&nbsp;</td>
+
+                                    <td>
+                                        About<br>
+                                        <a href=""> Contact Us<br></a>
+                                        <a href=""> About WebMD<br></a>
+                                        <a href=""> Careers<br></a>
+                                        <a href=""> Newsletter<br></a>
+                                        <a href=""> Corporate<br></a>
+                                        <a href=""> Accessibility<br></a>
+
+                                    </td>
+                                </tr>
+
+
+                            </table>
+                            <hr> &nbsp;
+                            <table id="tbl">
+                                <tr>
+                                    <td>
+                                        This health center receives HHS funding and has Federal PHS deemed status
+                                        with respect to certain health or health-related claims, including medical
+                                        malpractice claims, for itself and its covered individuals.
+
+                                        © 2022 Community Health Partners All rights reserved
+                                    </td>
+
+
+                                </tr>
+                            </table>
+                            <div style="height:100px ;">
+
+
+                            </div>
+                        </div>
+
+                        <!-- </div> -->
+                    </div>
+
+                </div>
+            </center>
+        </form>
+    </div>
+
+    <!-- --------------------------------------------------------------- -->
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+
+                <div class="modal-body" id="shii">
+
+                    <center>
+                        <div id="outerbody">
+                            <div id="namee">SIGNUP PAGE</div>
+                            <div type="button" data-bs-dismiss="modal" id="cross"></div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div id="leftdiv">
+                                        <div id="texti">
+                                            <h2 class="animate__animated animate__tada" id="maininfo">Hello, Friend!
+                                            </h2>
+                                            <h4 class="animate__animated animate__tada" id="info">Enter your personal
+                                                details <br> and start journey with us
+                                            </h4>
+                                        </div>
+                                        <div>
+                                            <img id="imgoo" src="pics/doctor.png" class="img-fluid" alt="...">
+                                        </div>
+                                        <div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- -----------------------right div----------------------------------- -->
+                                <div class="col-md-6">
+                                    <div id="rightdiv">
+                                        <div id="sign">
+
+
+
+                                            <!-- Example Code -->
+
+                                            <form class="row ">
+                                                <div class="col-md-9 offset-md-1">
+                                                    <label for="inputEmail4" class="form-label hi" id="ro">Email</label>
+                                                    <span id="errEmail"> *</span>
+
+                                                    <input type="email" class="form-control" id="inputEmail4">
+                                                </div>
+
+
+                                                <div class="col-md-9 offset-md-1">
+                                                    <label for="inputPassword4" class="form-label hii"
+                                                        id="roo">Password</label>
+                                                    <span id="errPwd">*</span>
+
+                                                    <input type="password" class="form-control" id="inputPassword4">
+                                                    <div id="eye"> <i class="fa fa-eye-slash fa-2x"
+                                                            aria-hidden="true"></i> </div>
+                                                </div>
+
+
+
+
+                                                <div class="col-md-9 offset-md-1">
+                                                    <label for="inputState" class="form-label hiii"
+                                                        id="rooo">Type</label>
+                                                    <select id="inputState" class="form-select">
+                                                        <option value="Select">Select type</option>
+                                                        <option value="Provider">Provider</option>
+                                                        <option value="Needy">Needy</option>
+                                                    </select>
+                                                </div>
+
+
+                                                <div class="col-12">
+                                                    <button type="button" disabled="disabled" id="btnsignup"
+                                                        class="btn btn-primary hiiii">Sign Up</button>
+                                                </div>
+                                            </form>
+
+
+                                            <div class="modal-footer">
+                                                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                                                <div id="res1">*</div>
+
+                                            </div>
+
+
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </center>
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <!-- ========================================================================================= -->
+
+
+    <div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-body" id="shii">
+
+                    <center>
+                        <div id="outerbody">
+                            <div id="namee">LOGIN PAGE</div>
+                            <div type="button" data-bs-dismiss="modal" id="cross"></div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div id="leftdiv">
+                                        <div id="texti">
+                                            <h2 class="animate__animated animate__tada" id="maininfo">Hello, Friend!
+                                            </h2>
+                                            <h4 class="animate__animated animate__tada" id="info">Enter your personal
+                                                details <br> and start journey with us
+                                            </h4>
+                                        </div>
+                                        <div>
+                                            <img id="imgoo" src="pics/login.png" class="img-fluid" alt="...">
+                                        </div>
+                                        <div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- -----------------------right div----------------------------------- -->
+                                <div class="col-md-6">
+                                    <div id="rightdiv">
+                                        <div id="sign">
+
+
+
+                                            <!-- Example Code -->
+
+                                            <form class="row ">
+                                                <div class="col-md-9 offset-md-1">
+                                                    <label for="inputEmail5" id="ru" class="form-label hi">Email</label>
+                                                    <span id="errEmail1"> *</span>
+                                                    <input type="email" class="form-control" id="inputEmail5">
+                                                </div>
+
+
+                                                <div class="col-md-9 offset-md-1">
+                                                    <label for="inputPassword5" id="ruu"
+                                                        class="form-label hii">Password</label>
+                                                    <span id="errPwd1"> *</span>
+                                                    <input type="password" class="form-control" id="inputPassword5">
+                                                    <div id="eye"> <i class="fa fa-eye-slash fa-2x"
+                                                            aria-hidden="true"></i> </div>
+                                                </div>
+
+
+
+
+
+
+
+                                                <div class="col-12">
+                                                    <button type="button" id="btnLogin"
+                                                        class="btn btn-primary hiiii">Login
+                                                    </button>
+                                                </div>
+                                            </form>
+
+                                            <div class="modal-footer">
+                                                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
+                                                <div id="res2">*</div>
+
+                                            </div>
+
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </center>
+
+
+
+
+
+
+
+
+
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ======================================================== -->
+        <!-- ==============================================================  -->
+        <!-- ======================================================================================  -->
+       
+        <!-- =============================================================== -->
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

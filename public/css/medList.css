@@ -1,0 +1,95 @@
+.title-word {
+    animation: color-animation 4s linear infinite;
+  }
+  
+  .title-word-1 {
+    --color-1: #DF8453;
+    --color-2: #3D8DAE;
+    --color-3: #E4A9A8;
+  }
+  
+  .title-word-2 {
+    --color-1: #DBAD4A;
+    --color-2: #ACCFCB;
+    --color-3: #17494D;
+  }
+  
+ 
+  
+  
+  @keyframes color-animation {
+    0%    {color: var(--color-1)}
+    32%   {color: var(--color-1)}
+    33%   {color: var(--color-2)}
+    65%   {color: var(--color-2)}
+    66%   {color: var(--color-3)}
+    99%   {color: var(--color-3)}
+    100%  {color: var(--color-1)}
+  }
+  
+  /* Here are just some visual styles. 🖌 */
+  
+  .container {
+    display: grid;
+    place-items: center;  
+    text-align: center;
+    height: 100vh
+  }
+  
+  .title {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 800;
+    font-size: 4.5vw;
+    text-transform: uppercase;
+  }
+
+  #medicines {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  #medicines td, #medicines th {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  #medicines tr:nth-child(even){background-color: #f2f2f2;}
+  
+  #customers tr:hover {background-color: #ddd;}
+  
+  #medicines th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+  }
+
+  /* =========================================================================  */
+  #cross {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    
+    margin-left: 730px;
+    margin-top: -43px;
+    
+    
+    background-image: url(https://cdn-icons-png.flaticon.com/512/6276/6276642.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+
+
+
+}
+
+#cross:hover {
+    cursor: pointer;
+    /* background-image: url(https://cdn-icons-png.flaticon.com/512/6276/6276642.png); */
+
+}
+
+#cross:active {
+    transform: translate(-5px, 5px);
+}

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script src="js/angular.min.js"></script>
+<link rel="stylesheet" href="css/medList.css">
+    <script>
+        var myModule=angular.module("itsMyModule",[]);
+        myModule.controller("myController",function($scope,$http)
+        {
+
+            $scope.fetchAndShowAlll=function()
+            {
+                $http.get("/fetchAlll").then(fxSuccess,fxFail);
+                function fxSuccess(response)
+                {
+                    // alert(JSON.stringify(response.data));
+                    $scope.allRecordsJson=response.data;
+                }
+                function fxFail(response)
+                {
+                    alert(response.data);
+                }
+            }
+
+            // ============================= 
+            $scope.doDeleteFromTable=function(email)
+            {
+                if(confirm("R u Sure?")==false)
+                return;
+
+
+                $http.get("/delete-recordd?email="+email).then(fxSuccess,fxFail);
+                function fxSuccess(response)
+                {
+                     alert(response.data);
+                    $scope.fetchAndShowAlll();
+                }
+                function fxFail(response)
+                {
+                    alert(response.data);
+                }
+            }
+
+
+        })
+    </script>
+
+</head>
+
+<body ng-app="itsMyModule" ng-controller="myController" ng-init="fetchAndShowAlll();">
+    <center>
+        <div>
+            <h2 class="title">
+                <span class="title-word title-word-1">MEDICINES</span>
+                <span class="title-word title-word-2">LIST</span>
+                
+              </h2>
+        </div>
+       <!-- <input type="button" class="btn btn-danger" value="Fetch All records" ng-click="fetchAndShowAlll();"> -->
+
+       <hr>
+          <table id="medicines" class="table" width="800" border="1" rules="all"> 
+            <tr>
+                <th>SR.No.</th>
+                <th>EMAIL</th>
+                <th>MEDICINE</th>
+                <th>COMPANY</th>
+                <th>EXPIRY DATE</th>
+                <th>PACKING</th>
+                <th>QTY</th>
+                <th>MPOWER</th>
+                <th>PIC</th>
+                <th>INFO</th>
+                <th>DOL</th>
+                <th>REMOVE</th>
+            </tr>
+
+            <tr ng-repeat="obj in allRecordsJson" >
+                <td>{{$index+1}}</td>
+                <td>
+                    {{obj.email}}
+                </td>
+                <td>{{obj.med}}</td>
+                <td>{{obj.company}}</td>
+                <td>{{obj.expdate}}</td> 
+                <td>{{obj.packing}}</td>
+                <td>{{obj.qty}}</td>
+                <td>{{obj.mpower}}</td>
+                <td>{{obj.pic}}</td>
+                <td>{{obj.info}}</td>
+                <td>{{obj.dol}}</td>
+                <td>
+                    <input type="button" class="btn btn-danger"  value="Delete" ng-click="doDeleteFromTable(obj.email);"></input>
+                </td> 
+            </tr>
+          </table>
+
+    </center>
+    
+</body>
+</html>

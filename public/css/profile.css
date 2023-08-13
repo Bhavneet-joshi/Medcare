@@ -1,0 +1,269 @@
+
+#outerbody {
+    width: 1300px;
+    height: 690px;
+     /* background-color: rgb(189, 38, 38);  */
+     margin-top: 20px;
+
+}
+
+
+
+#leftdiv {
+    
+    /* border: 2px solid black; */
+    margin-left: 50px;
+    width: 430px;
+    height: 690px;
+    border-right: 0px;
+    border-top: 0px;
+    background-color: rgba(27,139,185,255);
+    color: white;
+    transform:
+    
+    perspective(800px)
+    rotateY(1deg);
+  transition: transform 1s ease 0s;
+  border-radius: 4px;
+  box-shadow:
+    rgba(0, 0, 0, 0.024) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0.05) 0px 1px 0px 0px,
+    rgba(0, 0, 0, 0.03) 0px 0px 8px 0px,
+    rgba(0, 0, 0, 0.1) 0px 20px 30px 0px;
+    
+   
+   
+         
+} 
+
+/* #leftdiv:hover {
+    transform: perspective(800px) rotateY(1deg);
+  } */
+
+#rightdiv {
+    /* background-color: aqua; */
+    /* border: 2px solid black; */
+    margin-left: -65px;
+    /* background-color: rgba(27,139,185,255); */
+    background-color:  rgba(223,231,229,255);
+    width: 820px;
+    height: 690px;
+    border-left: 0px;
+    border-top: 0px;
+    transform:
+    perspective(800px)
+    rotateY(-1deg);
+  transition: transform 1s ease 0s;
+  border-radius: 4px;
+  box-shadow:
+    rgba(0, 0, 0, 0.024) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0.05) 0px 1px 0px 0px,
+    rgba(0, 0, 0, 0.03) 0px 0px 8px 0px,
+    rgba(0, 0, 0, 0.1) 0px 20px 30px 0px;
+
+   
+}
+#pp
+{
+    color: rgb(14, 11, 11);
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+
+    
+}
+
+.hi
+{
+   
+    color: rgb(8, 14, 14);
+    font-size: x-large;
+    /* margin-left: -233px; */
+    /* margin-top: 90px; */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+  
+.hii
+{
+   
+    color: rgb(8, 14, 14);
+    font-size: x-large;
+    /* margin-left: -193px;
+    margin-top: 10px; */
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+#imagee
+{
+    /* background-color: aquamarine; */
+    position: absolute;
+    margin-top: 0px;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+    float: right;
+    margin-left: 13px;
+    /* outline: 0px; */
+}
+#imagee1
+{
+    /* background-color: aquamarine; */
+    position: absolute;
+    margin-top: 20px;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+    float: right;
+    margin-left: 3px;
+    /* outline: 0px; */
+}
+
+
+
+#inputProfile
+{
+    width: 235px;
+    margin-top: 20px;
+    margin-left: 50PX;
+}
+#inputProof
+{
+    margin-top: 70px;
+}
+
+#btnSave
+{
+    position: absolute;
+/* width: 70px; */
+margin-left: 320px;
+margin-top: 30px;
+background-color: white;
+color: black;
+/* background-color: beige; */
+
+width: 130px;
+height: 40px;
+cursor: pointer;
+background: transparent;
+border: 1px solid #91C9FF;
+outline: none;
+transition: 1s ease-in-out;
+
+
+
+
+}
+
+#btnUpdate
+{
+    background-color: white;
+color: black;
+    position: absolute;
+    width: 70px;
+    margin-left: 480px;
+    margin-top: 30px;
+
+    width: 130px;
+height: 40px;
+cursor: pointer;
+background: transparent;
+border: 1px solid #91C9FF;
+outline: none;
+transition: 1s ease-in-out;
+}
+#btnFetch
+{
+    background-color: white;
+    color: black;
+    position: absolute;
+    width: 70px;
+    margin-left: 340px;
+    margin-top: -39px;
+}
+#btnSave
+{
+    background-color: white;
+    color: black;
+}
+
+#btnUpdate
+{
+    background-color: white;
+    color: black;
+}
+
+#pro
+{
+    /* margin-top: 10px; */
+    margin-left: 50px;
+}
+.spc
+{
+    
+    margin-top: 10px;
+    
+}
+
+#inputCity
+{
+/* position: absolute; */
+margin-left: 40px;
+}
+
+#texti
+{
+    /* margin-top: 20px; */
+    padding-top: 20px;
+}
+#city
+{
+    margin-left: 40px;
+}
+
+#inputCtime
+{
+    margin-left: 40px;
+}
+#ct
+{
+    margin-left: 40px;
+}
+
+#leftimg
+{
+    width: 400px;
+    height: 400px;
+    border: 2px black solid;
+}
+#mr
+{
+    padding-top: 20px;
+}
+
+/* ===================================================  */
+
+#cross {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    
+    margin-left: 730px;
+    margin-top: -43px;
+    
+    
+    background-image: url(https://cdn-icons-png.flaticon.com/512/6276/6276642.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+
+
+
+}
+
+#cross:hover {
+    cursor: pointer;
+    /* background-image: url(https://cdn-icons-png.flaticon.com/512/6276/6276642.png); */
+
+}
+
+#cross:active {
+    transform: translate(-5px, 5px);
+}

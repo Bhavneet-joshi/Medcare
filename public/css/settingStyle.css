@@ -1,0 +1,231 @@
+#outerdiv {
+    margin-top: 30px;
+    width: 770px;
+    height: 500px;
+    /* border: 2px solid red; */
+}
+
+#leftdiv {
+    width: 320px;
+    height: 500px;
+    margin-top: -29px;
+    margin-left: 5px;
+    /* border-right: 2px solid red; */
+    background-color: rgba(27, 139, 185, 255);
+
+
+    transform:
+    
+    perspective(800px)
+    rotateY(1deg);
+  transition: transform 1s ease 0s;
+  border-radius: 4px;
+  box-shadow:
+    rgba(0, 0, 0, 0.024) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0.05) 0px 1px 0px 0px,
+    rgba(0, 0, 0, 0.03) 0px 0px 8px 0px,
+    rgba(0, 0, 0, 0.1) 0px 20px 30px 0px;
+
+}
+
+#rightdiv {
+    width: 430px;
+    margin-left: -66px;
+    margin-top: -29px;
+    height: 500px;
+    background-color: rgba(27, 139, 185, 255);
+
+    transform:
+    perspective(800px)
+    rotateY(-1deg);
+  transition: transform 1s ease 0s;
+  border-radius: 4px;
+  box-shadow:
+    rgba(0, 0, 0, 0.024) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0.05) 0px 1px 0px 0px,
+    rgba(0, 0, 0, 0.03) 0px 0px 8px 0px,
+    rgba(0, 0, 0, 0.1) 0px 20px 30px 0px;
+
+
+}
+
+#titl {
+    font-size: x-large;
+    width: 757px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* background-color: rgba(27, 139, 185, 255); */
+    margin-left: -20px;
+}
+
+#exampleModal {
+    /* background-color: rgba(223, 231, 229, 255); */
+}
+
+#innerleft {
+    position: absolute;
+    width: 300px;
+    height: 460px;
+    background-color: rgba(223,231,229,255); 
+    margin-left: 10px;
+    margin-top: 20px;
+    
+}
+
+#innerright {
+    position: absolute;
+    width: 410px;
+    height:460px ;
+    margin-top: 20px;
+    background-color: rgba(223,231,229,255); 
+    margin-left: 10px;
+    /* margin-top: 20px; */
+}
+
+#modu
+{
+    transform:
+    perspective(800px)
+    rotateY(-1deg);
+  transition: transform 1s ease 0s;
+  border-radius: 4px;
+  box-shadow:
+    rgba(0, 0, 0, 0.024) 0px 0px 0px 1px,
+    rgba(0, 0, 0, 0.05) 0px 1px 0px 0px,
+    rgba(0, 0, 0, 0.03) 0px 0px 8px 0px,
+    rgba(0, 0, 0, 0.1) 0px 20px 30px 0px;
+
+    /* ======================== */
+
+    -moz-box-shadow:    inset 0 0 10px #000000;
+   -webkit-box-shadow: inset 0 0 10px #000000;
+   box-shadow:         inset 0 0 10px #000000;
+}
+
+
+
+.hi
+{
+   
+    color: rgb(8, 14, 14);
+    font-size: x-large;
+    /* margin-left: -233px; */
+    margin-top: 90px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+  
+.hii
+{
+   
+    color: rgb(8, 14, 14);
+    font-size: x-large;
+    /* margin-left: -193px; */
+    margin-top: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.hiii
+{
+   
+    color: rgb(8, 14, 14);
+    font-size: x-large;
+    /* margin-left: -233px; */
+    margin-top: 10px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+
+.hiiii
+{
+    margin-top: 30px;
+    margin-left: 150px;
+    background-color:rgba(223,231,229,255) ;
+    color: black;
+
+    -webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
+}
+
+#inputEmail4
+{
+    -webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
+}
+
+#inputPassword4
+{
+    -webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
+}
+
+#inputNPassword
+{
+    -webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
+}
+
+
+
+.material-symbols-outlined {
+    size: 60px;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 48
+}
+.hlo
+{
+   position: absolute;
+    font-size: 70px;
+    margin-left: 140px;
+}
+
+
+/* =========================================================================  */
+
+#cross {
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    /* background-color: black; */
+    
+    margin-left: 730px;
+    margin-top: -43px;
+    
+    
+    background-image: url(https://cdn-icons-png.flaticon.com/512/6276/6276642.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+
+
+
+}
+
+#cross:hover {
+    cursor: pointer;
+    /* background-image: url(https://cdn-icons-png.flaticon.com/512/6276/6276642.png); */
+
+}
+
+#cross:active {
+    transform: translate(-5px, 5px);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

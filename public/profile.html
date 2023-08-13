@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bootstrap demo</title>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/profile.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+
+  <script>
+    function loadFile(ref) {
+      var image = document.getElementById('imagee');
+      image.src = URL.createObjectURL(ref.files[0]);
+      // alert("hello");
+    };
+
+    function loadFile1(ref) {
+      var image = document.getElementById('imagee1');
+      image.src = URL.createObjectURL(ref.files[0]);
+    };
+  </script>
+
+
+
+
+  <script>
+    $(document).ready(function () {
+
+var activeuser=localStorage.getItem("activeuser");
+$("#inputEmail4").val(activeuser).prop("readonly","true");
+
+
+
+
+      $("#btnFetch").click(function () {
+        var email = $("#inputEmail4").val();
+        var url = "/jsonFetchProfile?emailx=" + email;
+        alert(email);
+        $.getJSON(url, function (jsonAry) {
+          alert(JSON.stringify(jsonAry));
+          $("#inputAddress").val(jsonAry[0].address);
+          $("#inputCity").val(jsonAry[0].city);
+          $("#inputContact").val(jsonAry[0].contact);
+          $("#inputCtime").val(jsonAry[0].ctime);
+          $("#inputName").val(jsonAry[0].name);
+          $("#imagee").prop("src","uploadpic/"+jsonAry[0].profilepic);
+          $("#imagee1").prop("src","uploadpic/"+jsonAry[0].idpic);
+          //  $("#imagee1").val(jsonAry[0].idpic);
+
+
+        })
+      });
+
+      
+     
+
+      
+    });
+  </script>
+
+
+</head>
+
+<body>
+
+  <form action="/Signup-post" method="post" enctype="multipart/form-data">
+
+    <div class="container">
+      <div id="outerbody">
+        <div class="row">
+          <div class="col-md-5">
+            <div id="leftdiv">
+              <center>
+                <div id="texti">
+                  <h2 class="animate__animated animate__tada" id="maininfo">Hello, Friend!
+                  </h2>
+                  <h4 class="animate__animated animate__tada" id="info">Enter your personal
+                    details <br> and start journey with us
+                  </h4>
+                </div>
+
+                <div>
+                  
+
+
+
+
+
+                  <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img src="pics/101805151-cute-boy-cartoon-see-doctor-vector.jpg" class="d-block w-100" alt="...">
+                      </div>
+                      
+                     
+                    </div>
+                   
+                  </div>
+
+
+
+
+
+<div id="mr">
+  <h2>
+    <marquee behavior="" direction=""> WELCOME ! HELP NEEDY ONE</marquee>
+   
+  </h2>
+</div>
+
+
+
+
+
+
+
+                </div>
+              </center>
+            </div>
+          </div>
+          <!-- =========================================== -->
+
+          <div class="col-md-7">
+            <div id="rightdiv">
+              <div id="pp">Profile Page</div>
+
+              <div class="row ">
+                <div class="col-md-5 offset-md-1">
+                  <label for="inputEmail4" class="form-label hi">Email</label>
+                  <input type="email" class="form-control" name="inputEmail4" id="inputEmail4">
+                  <button type="button" class="btn btn-primary" id="btnFetch">Fetch</button>
+                </div>
+
+
+
+
+                <div class="col-md-5 offset-md-1">
+                  <label for="inputProfile" class="form-label hii" id="pro">Profile Pic</label>
+                  <img src="" class="img-fluid" id="imagee" alt="">
+
+
+                </div>
+
+                <div class="col-md-5 offset-md-1">
+                  <label for="inputName" class="form-label hii spc" id="namee">Name</label>
+                  <input type="text" class="form-control" name="inputName" id="inputName">
+                </div>
+
+                <div class="col-md-4 offset-md-1">
+
+                  <input type="file" class="form-control" id="inputProfile" name="inputProfile"
+                    onchange="loadFile(this);">
+                </div>
+
+
+
+                <div class="col-5 offset-md-1">
+                  <label for="inputAddress" class="form-label hi spc">Address</label>
+                  <input type="text" class="form-control" id="inputAddress" name="inputAddress"
+                    placeholder="1234 Main St">
+                </div>
+
+                <div class="col-md-4 offset-md-1">
+                  <label for="inputCity" class="form-label hi spc" id="city">City</label>
+                  <input type="text" class="form-control" id="inputCity" name="inputCity">
+                </div>
+
+                <div class="col-5 offset-md-1">
+                  <label for="inputContact" class="form-label hi spc">Contact</label>
+                  <input type="text" class="form-control" id="inputContact" name="inputContact" placeholder="">
+                </div>
+
+                <div class="col-md-4 offset-md-1">
+                  <label for="inputCtime" class="form-label hi spc" id="ct">Contact Time</label>
+                  <input type="text" class="form-control" id="inputCtime" name="inputCtime">
+                </div>
+
+                <div class="col-md-4 offset-md-1">
+                  <label for="inputCity" class="form-label hi spc">Id Proof</label>
+                  <img src="..." class="img-fluid " id="imagee1" alt="">
+                  <input type="file" class="form-control" id="inputProof" accept=".jpg, .jpeg, .png, .webp, .jfif"
+                    name="inputProof" onchange="loadFile1(this);">
+                </div>
+
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary" formaction="/profile-process" id="btnSave">Save</button>
+                </div>
+
+                <div class="col-12">
+                  <button type="submit" class="btn btn-primary" formaction="/profile-updation" id="btnUpdate">Update</button>
+                </div>
+
+                <!-- <div class="col-12">
+                  <button type="submit" class="btn btn-primary" id="btnFetch">Fetch</button>
+                </div> -->
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </form>
+
+
+
+</body>
+
+</html>
